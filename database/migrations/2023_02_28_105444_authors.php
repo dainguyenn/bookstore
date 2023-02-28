@@ -11,18 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('authors', function (Blueprint $table) {
+        Schema::create('authors',function(Blueprint $table){
             $table->id();
             $table->string('name')->nullable(false);
             $table->string('avatar') ;
             $table->date('dob');
             $table->string('address');
             $table->text('story');
-            $table->boolean('active')->default(true);
-            $table->date('create_at');
-            $table->string('create_by');
-            $table->date('modify_at');
-            $table->string('modify_by');
+            $table->boolean('active')->default(true); 
+            $table->string('created_by'); 
+            $table->string('updated_by');
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('authors');
+        //
     }
 };

@@ -18,23 +18,22 @@
 </head>
 
 <body class="font-sans antialiased   ">
-    <div class="flex">
-        <nav class=" bg-[#181823] w-[250px] text-[#4E6E81] h-auto">
+    <div class="flex min-h-screen">
+        <nav class=" bg-slate-500 w-[250px] text-white h-auto">
             <h1 class="text-3xl p-[3px]">BookStore</h1>
             <ul class="flex flex-col  p-[7px]">
-                <x-nav-item :href={{routes('admin.author.index')}}>
-                    Author
-                </x-nav-item>
-                <li class="text-[18px] my-1 rounded-[3.5px]   hover:bg-[#443C68] ease-in duration-[250ms]">
-                    <a class="p-[2px]">Home</a>
-                </li> 
+                <x-admin-nav-link :href="route('admin.author.index')" :active="request()->routeIs('admin.author.index')">
+                  Author 
+                </x-admin-nav-link>
+                <x-admin-nav-link :href="route('admin.books.index')" :active="request()->routeIs('admin.books.index')">
+                    Book 
+                  </x-admin-nav-link>
                 <li class="text-[18px] my-1 rounded-[3.5px]   hover:bg-[#443C68] ease-in duration-[250ms]">
                     <a class="p-[2px]">Home</a>
                 </li>
                 <li id="admin-control" class="text-[18px] my-1 rounded-[3.5px]   hover:bg-[#443C68] ease-in duration-[250ms]">
-                    <a class="p-[2px]">User</a> 
+                    <a class="p-[2px]">Admin</a> 
                     <i id="showMore"  class="fa-solid fa-caret-down "></i>
-
                 </li>
                 <li>
                     <div id="user-more" class="hidden">
@@ -43,18 +42,18 @@
                             <form method="POST"   action="{{ route('logout') }}">
                                 @csrf
     
-                                <x-nav-item :href="route('logout')"
+                                <x-admin-nav-link class="block" :href="route('logout')"
                                         onclick="event.preventDefault();
                                                     this.closest('form').submit();">
                                     {{ __('Log Out') }}
-                                </x-nav-item>
+                                </x-admin-nav-link>
                             </form>
                         </ul>
                     </div>
                 </li>
             </ul>
         </nav>
-        <div class="m-2 p-8 flex-grow-0">
+        <div class="m-2 p-8 flex-1 w-full">
             {{ $slot }}
         </div>
     </div>
