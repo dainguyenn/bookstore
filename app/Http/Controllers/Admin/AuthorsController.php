@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AuthorStoreRequest; 
-use App\Models\Authors; 
+use App\Models\Authors;  
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\Storage; 
 
 class AuthorsController extends Controller
 { 
@@ -24,7 +24,7 @@ class AuthorsController extends Controller
      */
     public function create()
     {
-        return view('admin.author.createOrUpdate');
+        return view('admin.author.create');
     }
 
     /**
@@ -32,12 +32,14 @@ class AuthorsController extends Controller
      */
     public function store(AuthorStoreRequest $request)
     {
-        $request->validate(['name'=>'required'],['name.required'=>'Tên không được để trống']);
-        $image = $request->file('image')->store('public/authors'); 
+         
+        $request->validate(['author_name'=>'required'],['author_name.required'=>'kkk']); 
+
+        $avatar = $request->file('avatar')->store('public/authors'); 
         
          Authors::create([
             'name' => $request->name,
-            'avatar' => $image,
+            'avatar' => $avatar,
             'dob' => $request->dob,
             'address' => $request->address,
             'story' => $request->story,
@@ -60,24 +62,51 @@ class AuthorsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Authors $author)
     {
-        //
+
+        return view('admin.author.update',compact('author'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Authors $author)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ],[
+            'name.required' => 'Trường name không được để trống'
+        ]);
+
+        $avatar = $author->avatar;
+        if($request->hasFile('avatar')){
+            Storage::delete($avatar);
+            $avatar = $request->file('avatar')->store('public/authors');
+        }
+
+        $author->update([
+            'name' => $request->name,
+            'avatar' => $avatar,
+            'dob' => $request->dob,
+            'address' => $request->address,
+            'story' => $request->story,
+
+
+        ]);
+
+        return to_route('admin.authors.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Authors $author)
     {
-        //
+        Storage::delete($author->avatar);
+        $author->delete();
+
+        return to_route('admin.authors.index');
+
     }
 }

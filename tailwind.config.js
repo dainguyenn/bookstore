@@ -15,10 +15,16 @@ module.exports = {
             },
             colors: {
                 'primary' :' #007bff',
-                'h_primary': '#0069d9'
-            }
+                'h_primary': '#0069d9',
+                'danger' : '#dc3545',
+                'h-danger' : '#c82333',
+                'warning' : '#ffc107',
+                'h-warning': '#e0a800'
+            },
+           
         },
+        
     },
-
+    
     plugins: [require('@tailwindcss/forms')],
 };

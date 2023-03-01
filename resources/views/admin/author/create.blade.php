@@ -8,18 +8,20 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
              <div class="">
-                <form action={{route('admin.author.store')}} method="POST" enctype="multipart/form-data">
+                 
+                <form action={{route('admin.authors.store')}} method="POST" enctype="multipart/form-data">
                     @csrf
+                   
                     <div class="">
                         <label for="">Name</label>
-                        <input type="text" name="name"/>
-                        @error('name')
+                        <input type="text" name="name"   />
+                        @error('name') 
                             <span class="text-red-700">{{$message}}</span>
                         @enderror
                     </div>
                     <div class="">
                         <label for="">Avatar</label>
-                        <input type="file" name="image"/>
+                        <input type="file" name="avatar"/>
                     </div>
                     <div class="">
                         <label for="">Dob</label>
