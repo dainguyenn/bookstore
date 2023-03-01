@@ -30,10 +30,16 @@
                     <div class="">
                         <label for="">Avaliable quantity</label>
                         <input type="number" name="avaliable_quantity"/>
+                        @error('avaliable_quantity') 
+                        <span class="text-red-700">{{$message}}</span>
+                    @enderror
                     </div>
                     <div class="">
                         <label for="">Price</label>
                         <input type="number" name="price"/>
+                        @error('price') 
+                        <span class="text-red-700">{{$message}}</span>
+                    @enderror
                     </div>
                     <div class="">
                         <label for="">Discount</label> 

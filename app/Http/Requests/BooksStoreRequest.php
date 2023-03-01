@@ -23,8 +23,19 @@ class BooksStoreRequest extends FormRequest
     {
         return [
             'title' => ['required'],
-            'avaliable_quantity' => ['required','min:0'],
-            'price' => ['required']
+            'avaliable_quantity' => ['numeric','required','min:0'],
+            'price' => ['numeric','required','min:0']
+        ];
+    }
+
+    public function messages()
+    {
+        return [ 
+            'title.required' => 'Trường title không được để trống.',
+            'avaliable_quantity.numeric' => 'Số lượng Không được để trống.',
+            'avaliable_quantity.min' => 'Số lượng phải lớn hơn 0.',
+            'price.numeric' => 'Trường price không được để trống.',
+            'price.min' => 'Trường price phải lớn hơn 0.'
         ];
     }
 }
