@@ -36,6 +36,11 @@ class BooksController extends Controller
      */
     public function store(BooksStoreRequest $request)
     {
+        $request->validate([
+            'title' => 'required',
+            'avaliable_quantity' => 'numeric|min:0',
+            'price' => 'numeric|min:0',
+        ]);
         $image = $request->file('image')->store('public/books');
          Books::create([
             'title' => $request->title,

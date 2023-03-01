@@ -7,37 +7,37 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-             <div class="">
+             <div class="w-1/2">
                  
                 <form action={{route('admin.authors.update',$author->id )}} method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    <div class="">
-                        <label for="">Name</label>
-                        <input type="text" name="name" value="{{$author->name}}" />
+                    <x-form-group class="">
+                        <x-form-label for="">Name</x-form-label>
+                        <x-form-input type="text" name="name" value="{{$author->name}}" />
                         @error('name') 
                             <span class="text-red-700">{{$message}}</span>
                         @enderror
-                    </div>
-                    <div class="">
-                        <label for="">Avatar</label>
+                    </x-form-group>
+                    <x-form-group class="">
+                        <x-form-label for="">Avatar</x-form-label>
                         <img src="{{Storage::url($author->avatar)}}" alt="">
-                        <input type="file" name="avatar"/>
-                    </div>
-                    <div class="">
-                        <label for="">Dob</label>
-                        <input type="date" name="dob" value="{{$author->dob}}"/>
-                    </div>
-                    <div class="">
-                        <label for="">Address</label>
-                        <input type="text" name="address" value="{{$author->address}}"/>
-                    </div>
-                    <div class="">
-                        <label for="">Story</label>
+                        <x-form-input type="file" name="avatar"/>
+                    </x-form-group>
+                    <x-form-group class="">
+                        <x-form-label for="">Dob</x-form-label>
+                        <x-form-input type="date" name="dob" value="{{$author->dob}}"/>
+                    </x-form-group>
+                    <x-form-group class="">
+                        <x-form-label for="">Address</x-form-label>
+                        <x-form-input type="text" name="address" value="{{$author->address}}"/>
+                    </x-form-group>
+                    <x-form-group class="">
+                        <x-form-label for="">Story</x-form-label>
                         <textarea   id="" cols="70" rows="5" name="story">
                             {{$author->story}}
                         </textarea>
-                    </div>
+                    </x-form-group>
                     <button class="py-[7px] px-[12px]  text-white cursor-pointer rounded-md bg-primary hover:bg-h_primary" type="submit">
                         Update
                     </button>

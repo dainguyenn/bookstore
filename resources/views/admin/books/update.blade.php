@@ -7,47 +7,48 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-             <div class="">
+             <div class="w-1/2">
                  
                 <form action={{route('admin.books.store',$book->id)}} method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    <div class="">
-                        <label for="">Title</label>
-                        <input type="text" name="title" value="{{$book->title}}" />
+                    <x-form-group>
+                        <x-form-label for="">Title</x-form-label>
+                        <x-form-input type="text" name="title" value="{{$book->title}}" />
                         @error('title') 
                             <span class="text-red-700">{{$message}}</span>
                         @enderror
-                    </div>
-                    <div class="">
-                        <label for="">Description</label>
-                        <textarea  id="" cols="30" rows="10" name="description">{{$book->description}}</textarea>
-                    </div>
-                    <div class="">
-                        <label for="">Image</label>
-                        <img class="w-20 h-20" src="{{Storage::url($book->image)}}" alt="">
-                        <input type="file" name="image"/>
-                    </div>
-                    <div class="">
-                        <label for="">Avaliable quantity</label>
-                        <input type="number" name="avaliable_quantity" value="{{$book->avaliable_quantity}}"/>
+                    </x-form-group>
+                    <x-form-group>
+                        <x-form-label for="">Description</x-form-label>
+                        <textarea  id="" cols="30" rows="2.5" name="description">{{$book->description}}</textarea>
+                    </x-form-group>
+                    <x-form-group>
+                        <x-form-label for="">Image</x-form-label>
+                        <img class="w-20 h-20 my-[3px]" src="{{Storage::url($book->image)}}" alt="">
+                        <x-form-input type="file" name="image"/>
+                    </x-form-group>
+                    <x-form-group>
+                        <x-form-label for="">Avaliable quantity</x-form-label>
+                        <x-form-input type="number" name="avaliable_quantity" value="{{$book->avaliable_quantity}}"/>
                         @error('avaliable_quantity') 
                             <span class="text-red-700">{{$message}}</span>
                         @enderror
-                    </div>
-                    <div class="">
-                        <label for="">Price</label>
-                        <input type="number" name="price" value="{{$book->price}}"/>
+                    </x-form-group>
+                    <x-form-group>
+                        <x-form-label for="">Price</x-form-label>
+                        <x-form-input type="number" name="price" value="{{$book->price}}"/>
                         @error('price') 
                             <span class="text-red-700">{{$message}}</span>
                         @enderror
-                    </div>
-                    <div class="">
-                        <label for="">Discount</label> 
-                        <input type="number" name="discount" value="{{$book->discount}}"/>
-                    </div>
-                    <div class="">
-                        <select name="author_id" >
+                    </x-form-group>
+                    <x-form-group>
+                        <x-form-label for="">Discount</x-form-label> 
+                        <x-form-input type="number" name="discount" value="{{$book->discount}}"/>
+                    </x-form-group>
+                    <div class="my-2">
+                        <x-form-label>Author</x-form-label>
+                        <select class="w-full rounded-lg" name="author_id" >
                             @foreach ($authors as $author)
                                 <option value="{{$author->id}}" {{$book->author_id == $author->id? 'selected':''}}>{{$author->name}}</option>
                             @endforeach

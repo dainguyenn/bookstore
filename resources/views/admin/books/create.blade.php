@@ -7,46 +7,48 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-             <div class="">
+             <div class="w-1/2">
                  
                 <form action={{route('admin.books.store')}} method="POST" enctype="multipart/form-data">
                     @csrf
                    
-                    <div class="">
-                        <label for="">Title</label>
-                        <input type="text" name="title"   />
+                    <x-form-group>
+                        <x-form-label for="title">Title</x-form-label>
+                        <x-form-input id="title" name='title' type="text"/>
                         @error('title') 
-                            <span class="text-red-700">{{$message}}</span>
+                         <x-err-message>{{$message}}</x-err-message>
                         @enderror
-                    </div>
-                    <div class="">
-                        <label for="">Description</label>
-                        <textarea name="description" id="" cols="30" rows="10"></textarea>
-                    </div>
-                    <div class="">
-                        <label for="">Image</label>
-                        <input type="file" name="image"/>
-                    </div>
-                    <div class="">
-                        <label for="">Avaliable quantity</label>
-                        <input type="number" name="avaliable_quantity"/>
+                    </x-form-group>
+                     
+                    <x-form-group>
+                        <x-form-label for="description">Description</x-form-label>
+                        <textarea name="description" id="description" cols="30" rows="2.5"></textarea>
+                    </x-form-group>
+                    <x-form-group>
+                        <x-form-label for="image">Image</x-form-label>
+                        <x-form-input id="image" type="file" name="image"/>
+                    </x-form-group>
+                    <x-form-group>
+                        <x-form-label for="avaliable_quantity">Avaliable quantity</x-form-label>
+                        <x-form-input id="avaliable_quantity" type="number" name="avaliable_quantity"/>
                         @error('avaliable_quantity') 
-                        <span class="text-red-700">{{$message}}</span>
-                    @enderror
-                    </div>
-                    <div class="">
-                        <label for="">Price</label>
-                        <input type="number" name="price"/>
+                        <x-err-message >{{$message}}</x-err-message>
+                        @enderror
+                    </x-form-group>
+                    <x-form-group>
+                        <x-form-label for="price">Price</x-form-label>
+                        <x-form-input id="price" type="number" name="price"/>
                         @error('price') 
-                        <span class="text-red-700">{{$message}}</span>
+                        <x-err-message >{{$message}}</x-err-message>
                     @enderror
-                    </div>
-                    <div class="">
-                        <label for="">Discount</label> 
-                        <input type="number" name="discount"/>
-                    </div>
-                    <div class="">
-                        <select name="author_id">
+                    </x-form-group>
+                    <x-form-group>
+                        <x-form-label for="discount">Discount</x-form-label> 
+                        <x-form-input id="discount" type="number" name="discount"/>
+                    </x-form-group>
+                    <div class="w-full my-2">
+                        <x-form-label>Author</x-form-label>
+                        <select class="w-full rounded-lg" name="author_id">
                             @foreach ($authors as $author)
                                 <option value="{{$author->id}}">{{$author->name}}</option>
                             @endforeach
