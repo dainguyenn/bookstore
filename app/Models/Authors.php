@@ -16,6 +16,11 @@ class Authors extends Model
         'address',
         'story',
         'created_by',
-        'updated_by'
+        'updated_by',
     ];
+     
+    public function books()
+    {
+        return $this->hasMany(Books::class);
+    }
 }

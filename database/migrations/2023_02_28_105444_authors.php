@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('authors',function(Blueprint $table){
             $table->id();
             $table->string('name')->nullable(false);
-            $table->string('avatar') ;
-            $table->date('dob');
-            $table->string('address');
-            $table->text('story');
+            $table->string('avatar')->nullable() ;
+            $table->date('dob')->nullable();
+            $table->string('address')->nullable();
+            $table->text('story')->nullable();
             $table->boolean('active')->default(true); 
             $table->string('created_by'); 
-            $table->string('updated_by');
+            $table->string('updated_by')->nullable();
             $table->timestamps();
         });
     }

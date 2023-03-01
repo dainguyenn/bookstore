@@ -32,10 +32,11 @@ class AuthorsController extends Controller
      */
     public function store(AuthorStoreRequest $request)
     {
-         
-        $request->validate(['author_name'=>'required'],['author_name.required'=>'kkk']); 
-
-        $avatar = $request->file('avatar')->store('public/authors'); 
+        $avatar = '';
+        
+        if($request->has('avatar')){
+            $avatar = $request->file('avatar')->store('public/authors'); 
+        }
         
          Authors::create([
             'name' => $request->name,
@@ -48,7 +49,7 @@ class AuthorsController extends Controller
          ]);
         
           
-        return to_route('admin.author.index');
+        return to_route('admin.authors.index');
     }
 
     /**
@@ -91,7 +92,7 @@ class AuthorsController extends Controller
             'dob' => $request->dob,
             'address' => $request->address,
             'story' => $request->story,
-
+            'updated_by' => auth()->user()->name
 
         ]);
 

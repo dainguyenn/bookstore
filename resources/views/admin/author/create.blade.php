@@ -38,6 +38,9 @@
                     <button class="py-[7px] px-[12px]  text-white cursor-pointer rounded-md bg-primary hover:bg-h_primary" type="submit">
                         Create
                     </button>
+                    <a class="py-[7px] px-[12px]  text-white cursor-pointer rounded-md bg-warning hover:bg-h-warning" href="{{route('admin.authors.index')}}" type="submit">
+                        Back
+                    </a>
                 </form>
              </div>
         </div>
