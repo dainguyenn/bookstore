@@ -8,52 +8,55 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex justify-end m-2 p-2">
-                <a class="py-[7px] px-[12px]  text-white cursor-pointer rounded-md bg-primary hover:bg-h_primary" 
-                href={{route('admin.authors.create')}}>
+                <x-a-link class="border-primary hover:bg-h-primary" href="{{ route('admin.authors.create') }}">
                     Add new Author
-                </a>
+                </x-a-link>
             </div>
-            <div>
+            <table class="min-w-full">
                 <!-- head -->
-                <div class="border-b-[1px] border-black flex justify-around bg-gray-500 py-3 mb-6">
-                    <div class="">Id</div>
-                    <div class=" ">Name</div>
-                    <div class="">Avatar</div>
-                    <div class="">Dob</div>
-                    <div class="">Address</div>
-                    <div class="">Story</div>
-                    <div class="">Action</div>
-                </div>
+                <thead class="bg-gray-50 dark:bg-gray-700">
+                    <tr class="border-black  bg-gray-500  h-[60px]">
+                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">Id</th>
+                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">Name</th>
+                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">Avatar</th>
+                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">Dob</th>
+                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">Address</th>
+                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">Story</th>
+                        <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">Action</th>
+                    </tr>
+                </thead>
                 <!-- section -->
-                @foreach ($authors as $author)
-                    <div class="flex justify-around my-[5px]">
-                        <div class="">{{$author->id}}</div>
-                        <div class=" ">{{$author->name}}</div>
-                        <div class=""><img src="{{ Storage::url($author->avatar) }}" alt="" class="w-20 h-20"></div>
-                        <div class=" ">{{$author->dob}}</div>
-                        <div class=" ">{{$author->address}}</div>
-                        <div class=" ">
-                            @if (strlen($author->story) > 25)
-                                {{substr( $author->story,0,25).'...'}}
-                            @else
-                                {{$author->story}}
-                            @endif
-                        </div>
-                        <div class="">
-                           <div>
-                                <form action="{{route('admin.authors.destroy',$author->id)}}" method="POST"
-                                    onsubmit="return confirm('Bạn chắc chắn muốn xóa?');"
-                                    >
+                <tbody>
+                    @foreach ($authors as $author)
+                        <tr class="bg-white border-b ">
+                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">{{ $author->id }}</td>
+                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">{{ $author->name }}</td>
+                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap "><img src="{{ Storage::url($author->avatar) }}" alt="" class="w-20 h-20"></td>
+                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">{{ $author->dob }}</td>
+                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">{{ $author->address }}</td>
+                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">
+                                @if (strlen($author->story) > 25)
+                                    {{ substr($author->story, 0, 25) . '...' }}
+                                @else
+                                    {{ $author->story }}
+                                @endif
+                            </td>
+                            <td class="py-4 px-6 text-sm font-medium flex items-center text-gray-900 whitespace-nowrap ">
+
+                                <form action="{{ route('admin.authors.destroy', $author->id) }}" method="POST"
+                                    onsubmit="return confirm('Bạn chắc chắn muốn xóa?');">
                                     @csrf
                                     @method('DELETE')
-                                    <x-button class="bg-danger hover:bg-h-danger" type="submit">Delete</x-button>
+                                    <x-button class="border-danger hover:bg-h-danger" type="submit">Delete</x-button>
                                 </form>
-                           </div>
-                            <x-a-link :href="route('admin.authors.edit',$author->id)" class="bg-primary hover:bg-h_primary">Update</x-a-link>
-                        </div>
-                    </div>   
-                @endforeach 
-            </div>
+
+                                <x-a-link :href="route('admin.authors.edit', $author->id)" class="border-primary hover:bg-h-primary ml-1">Update</x-a-link>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+
+            </table>
         </div>
     </div>
 </x-admin-layout>

@@ -15,7 +15,7 @@ module.exports = {
             },
             colors: {
                 'primary' :' #007bff',
-                'h_primary': '#0069d9',
+                'h-primary': '#0069d9',
                 'danger' : '#dc3545',
                 'h-danger' : '#c82333',
                 'warning' : '#ffc107',

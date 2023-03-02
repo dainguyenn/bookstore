@@ -1,0 +1,1 @@
+<div class="flex flex-col bg-white border-2 w-auto p-3 rounded-lg">{{$slot}}</div>
