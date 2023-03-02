@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
              <div class="w-1/2">
                  
-                <form action={{route('admin.books.store',$book->id)}} method="POST" enctype="multipart/form-data">
+                <form action={{route('admin.books.update',$book->id)}} method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <x-form-group>
@@ -55,7 +55,7 @@
                         </select>
                     </div>
                     <button class="py-[7px] px-[12px]  text-white cursor-pointer rounded-md bg-primary hover:bg-h_primary" type="submit">
-                        Create
+                        Update
                     </button>
                     <a class="py-[7px] px-[12px]  text-white cursor-pointer rounded-md bg-warning hover:bg-h-warning" href="{{route('admin.books.index')}}" type="submit">
                         Back

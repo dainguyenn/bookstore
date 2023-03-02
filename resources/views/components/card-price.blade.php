@@ -1,1 +1,1 @@
-<span>{{$slot}}</span>
+<span>{{$slot}} VNĐ</span>

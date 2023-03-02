@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthorController;
 use App\Http\Controllers\Admin\AuthorsController;
 use App\Http\Controllers\Admin\BooksController;
+use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,9 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+ 
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -31,6 +30,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/',[FrontendController::class , 'home'])->name('frontend.home');
 
 Route::middleware(['auth','admin'])->name('admin.')->prefix('admin')->group(function() {
     Route::get('/',[AdminController::class,'index'])->name('index');

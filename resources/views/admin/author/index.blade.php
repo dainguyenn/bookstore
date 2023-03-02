@@ -28,7 +28,7 @@
                 <!-- section -->
                 <tbody>
                     @foreach ($authors as $author)
-                        <tr class="bg-white border-b ">
+                        <tr class="bg-white border-b">
                             <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">{{ $author->id }}</td>
                             <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">{{ $author->name }}</td>
                             <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap "><img src="{{ Storage::url($author->avatar) }}" alt="" class="w-20 h-20"></td>

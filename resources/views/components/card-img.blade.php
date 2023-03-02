@@ -1,1 +1,1 @@
-<img class="w-full h-full rounded-lg" >
+<img {{$attributes->merge(['class' => 'w-[200px] h-[200px] rounded-lg'])}}   >

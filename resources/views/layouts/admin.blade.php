@@ -38,7 +38,7 @@
                 <li>
                     <div id="user-more" class="hidden">
                         <ul class=" pl-[5px]">
-                            <a class="text-[18px] rounded-[3.5px]   hover:bg-[#443C68] ease-in duration-[250ms]" href="">Trang chủ</a>
+                            <x-admin-nav-link class="text-[18px] rounded-[3.5px]   hover:bg-[#443C68] ease-in duration-[250ms] block" href="{{route('frontend.home')}}">Trang chủ</x-admin-nav-link>
                             <form method="POST"   action="{{ route('logout') }}">
                                 @csrf
     

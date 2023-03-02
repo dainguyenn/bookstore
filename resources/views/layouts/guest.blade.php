@@ -17,17 +17,58 @@
 </head>
 
 <body class="font-sans text-gray-900 antialiased">
-    <div class=" flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-        <div class="flex w-full py-5 bg-white ">
-            <div class="flex-1 items-center bg-white"><span class="text-3xl">Book Store</span></div>
+    <div class=" flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-200">
+        <div class="flex w-full py-5 bg-white shadow-md">
+            <div class="flex-1 items-center bg-white"><span class="text-3xl px-5">Book Store</span></div>
             <div class="px-7  flex items-center">
                 <span class="text-lg px-3">Home</span>
                 <span class="text-lg px-3">Books</span> 
-                <span class="text-lg px-3">Login</span>
+                @if (Auth::check())
+                    <div class="flex ">
+                        <div class="hidden sm:flex sm:items-center sm:ml-6">
+                            <x-dropdown align="right" width="48">
+                                <x-slot name="trigger">
+                                    <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                        <span class="text-lg px-3">{{ Auth::user()->name }}</span>
+            
+                                        <div class="ml-1">
+                                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                    </button>
+                                </x-slot>
+            
+                                <x-slot name="content">
+                                    <x-dropdown-link :href="route('profile.edit')">
+                                        {{ __('Profile') }}
+                                    </x-dropdown-link>
+                                    @if (Auth::user()->is_admin)
+                                        <x-dropdown-link :href="route('admin.index')">
+                                            {{ __('Admin') }}
+                                        </x-dropdown-link>
+                                    @endif
+                                    <!-- Authentication -->
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+            
+                                        <x-dropdown-link :href="route('logout')"
+                                                onclick="event.preventDefault();
+                                                            this.closest('form').submit();">
+                                            {{ __('Log Out') }}
+                                        </x-dropdown-link>
+                                    </form>
+                                </x-slot>
+                            </x-dropdown>
+                        </div>
+                    </div>
+                @else
+                <x-a-link class="text-lg px-3 border-primary hover:bg-h-primary" href="{{route('login')}}">Login</x-a-link>
 
+                @endif
             </div>
         </div>
-        <div class="w-full min-h-screen sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+        <div class="w-full min-w-full min-h-screen sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
             {{ $slot }}
         </div>
     </div>

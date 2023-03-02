@@ -8,10 +8,10 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex justify-end m-2 p-2">
-                <a class="py-[7px] px-[12px]  text-white cursor-pointer rounded-md bg-primary hover:bg-h_primary"
-                    href={{ route('admin.books.create') }}>
+                <x-a-link class="border-primary hover:bg-h-primary"
+                href="{{ route('admin.books.create') }}">
                     Add new Books
-                </a>
+                </x-a-link>
             </div>
             <table class="min-w-full">
                 <!-- head -->
@@ -67,16 +67,16 @@
                             <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">
                                 {{ $book->author_id }}
                             </td>
-                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">
+                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap flex ">
                                 <div>
                                     <form action="{{ route('admin.books.destroy', $book->id) }}" method="POST"
                                         onsubmit="return confirm('Bạn chắc chắn muốn xóa?');">
                                         @csrf
                                         @method('DELETE')
-                                        <x-button class="bg-danger hover:bg-h-danger" type="submit">Delete</x-button>
+                                        <x-button class="border-danger hover:bg-h-danger" type="submit">Delete</x-button>
                                     </form>
                                 </div>
-                                <x-a-link :href="route('admin.books.edit', $book->id)" class="bg-primary hover:bg-h_primary">Update</x-a-link>
+                                <x-a-link  :href="route('admin.books.edit', $book->id)" class="ml-1 border-primary hover:bg-h-primary">Update</x-a-link>
                             </td>
                         </tr>
                     @endforeach

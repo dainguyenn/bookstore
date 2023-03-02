@@ -1,1 +1,1 @@
-<div class="flex flex-col bg-white border-2 w-auto p-3 rounded-lg">{{$slot}}</div>
+<div class="flex flex-col bg-white border-2 w-auto p-3 rounded-lg hover:shadow-lg hover:shadow-[rgb(0 0 0 / 10%) 0px 0px 20px]">{{$slot}}</div>
