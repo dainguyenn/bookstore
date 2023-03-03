@@ -19,7 +19,7 @@
 
 <body class="font-sans antialiased   ">
     <div class="flex min-h-screen">
-        <nav class=" bg-slate-500 w-[250px] text-white h-auto">
+        <nav class=" bg-slate-500 w-[250px] min-w-[250px] text-white h-auto">
             <h1 class="text-3xl p-[3px]">BookStore</h1>
             <ul class="flex flex-col  p-[7px]">
                 <x-admin-nav-link :href="route('admin.authors.index')" :active="request()->routeIs('admin.authors.index')">

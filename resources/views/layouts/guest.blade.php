@@ -11,25 +11,28 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
 </head>
-
-<body class="font-sans text-gray-900 antialiased">
+ 
+<body class="font-sans text-gray-900 antialiased"> 
     <div class=" flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-200">
         <div class="flex w-full py-5 bg-white shadow-md">
-            <div class="flex-1 items-center bg-white"><span class="text-3xl px-5">Book Store</span></div>
+            <div class="flex-1 items-center bg-white"><a href="{{route('frontend.home')}}" class="text-3xl px-5">Book Store</a></div>
             <div class="px-7  flex items-center">
-                <span class="text-lg px-3">Home</span>
+                <a href="{{route('frontend.home')}}" class="text-lg px-3">Home</a>
                 <span class="text-lg px-3">Books</span> 
+                <a href="{{route('cart.getCart')}}" class="text-lg px-3"> <i class="fa-solid fa-cart-shopping"></i></a>
+                 
                 @if (Auth::check())
-                    <div class="flex ">
+                    <div class="flex">
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
                             <x-dropdown align="right" width="48">
                                 <x-slot name="trigger">
                                     <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                                        <span class="text-lg px-3">{{ Auth::user()->name }}</span>
+                                        <div class="text-lg px-3">{{ Auth::user()->name }}</div>
             
                                         <div class="ml-1">
                                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -44,9 +47,9 @@
                                         {{ __('Profile') }}
                                     </x-dropdown-link>
                                     @if (Auth::user()->is_admin)
-                                        <x-dropdown-link :href="route('admin.index')">
-                                            {{ __('Admin') }}
-                                        </x-dropdown-link>
+                                    <x-dropdown-link :href="route('admin.index')">
+                                        {{ __('Admin') }}
+                                    </x-dropdown-link>
                                     @endif
                                     <!-- Authentication -->
                                     <form method="POST" action="{{ route('logout') }}">
@@ -68,10 +71,11 @@
                 @endif
             </div>
         </div>
-        <div class="w-full min-w-full min-h-screen sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+        <div class="w-full min-w-full min-h-screen sm:max-w-md mt-6 px-6 py-4 bg-gray-200 shadow-md overflow-hidden sm:rounded-lg">
             {{ $slot }}
         </div>
-    </div>
+    </div> 
 </body>
 
+                                        
 </html>

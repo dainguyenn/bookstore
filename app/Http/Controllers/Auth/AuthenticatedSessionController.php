@@ -37,12 +37,13 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        $data =  session()->get('cart');
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
-
+        session()->put('cart', $data);
         return redirect('/');
     }
 }

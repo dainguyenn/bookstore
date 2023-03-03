@@ -34,12 +34,8 @@
                             <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap "><img src="{{ Storage::url($author->avatar) }}" alt="" class="w-20 h-20"></td>
                             <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">{{ $author->dob }}</td>
                             <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">{{ $author->address }}</td>
-                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">
-                                @if (strlen($author->story) > 25)
-                                    {{ substr($author->story, 0, 25) . '...' }}
-                                @else
-                                    {{ $author->story }}
-                                @endif
+                            <td class="py-4 px-6 text-sm text-ellipsis overflow-hidden font-medium text-gray-900 whitespace-nowrap ">
+                                <span class="w-[230px] text-ellipsis overflow-hidden block">{{$author->story}}</span>
                             </td>
                             <td class="py-4 px-6 text-sm font-medium flex items-center text-gray-900 whitespace-nowrap ">
 

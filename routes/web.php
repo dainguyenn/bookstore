@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthorController;
 use App\Http\Controllers\Admin\AuthorsController;
 use App\Http\Controllers\Admin\BooksController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,13 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/',[FrontendController::class , 'home'])->name('frontend.home');
+Route::get('/books/{book}',[FrontendController::class , 'showDetail'])->name('frontend.book.detail');
+ 
+Route::middleware('auth')->prefix('cart')->name('cart.')->group(function ()
+{
+    Route::post('/{book}',[CartController::class,'addTocart'])->name('addToCart');
+    Route::get('/',[CartController::class,'getCart'])->name('getCart');
+});
 
 Route::middleware(['auth','admin'])->name('admin.')->prefix('admin')->group(function() {
     Route::get('/',[AdminController::class,'index'])->name('index');

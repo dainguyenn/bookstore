@@ -1,1 +1,1 @@
-<span>{{$slot}}</span>
+<span class="my-2">{{$slot}}</span>

@@ -49,14 +49,12 @@
                         <tr class="bg-white border-b">
                             <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">
                                 {{ $book->id }}</td>
-                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">
-                                {{ $book->title }}</td>
-                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap ">
-                                @if (strlen($book->description) > 25)
-                                    {{ substr($book->description, 0, 25) . '...' }}
-                                @else
-                                    {{ $book->description }}
-                                @endif
+                            <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap"> 
+                                  
+                                 <span class="w-[120px] text-ellipsis overflow-hidden block">{{$book->title}}</span>
+                            </td>
+                            <td class="py-4 px-6 text-sm text-ellipsis overflow-hidden font-medium text-gray-900 whitespace-nowrap ">
+                                <span class="w-[230px] text-ellipsis overflow-hidden block">{{$book->title}}</span>
                             </td>
                             <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap "><img
                                     src="{{ Storage::url($book->image) }}" alt="" class="w-20 h-20"></td>
