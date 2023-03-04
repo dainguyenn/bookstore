@@ -3,7 +3,7 @@
     <div class="w-full flex justify-center">
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}" class="w-1/2">
+    <form method="POST" action="{{ route('login') }}" class="w-1/4">
         @csrf
 
         <!-- Email Address -->
@@ -43,6 +43,9 @@
             <x-primary-button class="ml-3">
                 {{ __('Log in') }}
             </x-primary-button>
+            <a href="{{route('register')}}" class="ml-3">
+                {{ __('Resigter') }}
+            </a>
         </div>
     </form>
     </div>
