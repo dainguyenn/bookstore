@@ -24,8 +24,11 @@
             <div class="px-7  flex items-center">
                 <a href="{{route('frontend.home')}}" class="text-lg px-3">Home</a>
                 <span class="text-lg px-3">Books</span> 
-                <a href="{{route('cart.getCart')}}" class="text-lg px-3"> <i class="fa-solid fa-cart-shopping"></i></a>
-                 
+                <a href="{{route('cart.getCart')}}" class="text-lg px-3"> 
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="p-[2px] rounded-lg bg-red-500">{{Session::get('cart')? Session::get('cart')->totalQty : 0}}</span>
+                </a>
+                
                 @if (Auth::check())
                     <div class="flex">
                         <div class="hidden sm:flex sm:items-center sm:ml-6">

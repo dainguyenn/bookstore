@@ -37,4 +37,27 @@ class CartController extends Controller
         return view('frontend.cart',compact(['books','total']));
 
     }
+
+    public function removeItem(Request $request,$id)
+    {
+          
+        if(!Session::has('cart')){
+            return view('frontend.cart');
+        } 
+        $oldCard = Session::get('cart'); 
+        $cart = new Cart($oldCard);
+        $cart->removeItem($id);
+        if(count($cart->items) == 0){
+            $request->session()->forget('cart');
+            return view('frontend.cart');
+
+        }else{
+            $request->session()->put('cart',$cart); 
+            $books = $cart->items; 
+            $total = $cart->totalPrice;
+            return view('frontend.cart',compact(['books','total']));
+        }
+        
+
+    }
 }

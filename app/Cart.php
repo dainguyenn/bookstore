@@ -22,9 +22,20 @@ class Cart {
             }
         }
         $storeItem['qty']++;
-        $storeItem['price'] = $item->price * $storeItem['qty'];
+        $storeItem['price'] = $item->price * ($item->discount == 0? 1 : ((100-$item->discount)/100)) * $storeItem['qty'] ;
         $this->items[$id] = $storeItem;
         $this->totalQty++;
-        $this->totalPrice += $item->price;
+        $this->totalPrice += $storeItem['price'];
+    }
+
+    public function removeItem($id)
+    {   
+        if(array_key_exists($id, $this->items)){
+            $item = $this->items[$id]; 
+            $this->totalPrice -= ($item['price'] * $item['qty']);
+            $this->totalQty -= $item['qty'];
+            unset($this->items[$id]);
+        }
+       
     }
 }

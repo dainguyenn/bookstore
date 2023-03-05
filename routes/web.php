@@ -39,6 +39,7 @@ Route::middleware('auth')->prefix('cart')->name('cart.')->group(function ()
 {
     Route::post('/{book}',[CartController::class,'addTocart'])->name('addToCart');
     Route::get('/',[CartController::class,'getCart'])->name('getCart');
+    Route::delete('/{id}',[CartController::class,'removeItem'])->name('removeItem');
 });
 
 Route::middleware(['auth','admin'])->name('admin.')->prefix('admin')->group(function() {
