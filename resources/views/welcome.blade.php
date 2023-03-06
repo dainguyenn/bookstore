@@ -6,7 +6,7 @@
                 <x-card>
                     <x-card-img src="{{Storage::url($book->image)}}"/>
                     <x-card-title>{{$book->title}}</x-card-title>
-                    <x-card-price>{{$book->price}}</x-card-price>
+                    <x-card-price>{{number_format($book->price)}}</x-card-price>
                 </x-card>
                </a>
             @endforeach

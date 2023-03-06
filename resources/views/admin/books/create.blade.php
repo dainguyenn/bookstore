@@ -22,7 +22,7 @@
                      
                     <x-form-group>
                         <x-form-label for="description">Description</x-form-label>
-                        <textarea name="description" id="description" cols="30" rows="2.5"></textarea>
+                        <textarea name="description" id="content" cols="30" rows="2.5"></textarea>
                     </x-form-group>
                     <x-form-group>
                         <x-form-label for="image">Image</x-form-label>

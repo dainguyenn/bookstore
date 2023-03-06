@@ -34,7 +34,7 @@
                     </x-form-group>
                     <x-form-group class="">
                         <x-form-label for="">Story</x-form-label>
-                        <textarea   id="" cols="70" rows="5" name="story">
+                        <textarea   id="content" cols="70" rows="5" name="story">
                             {{$author->story}}
                         </textarea>
                     </x-form-group>

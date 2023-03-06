@@ -21,7 +21,7 @@
                     </x-form-group>
                     <x-form-group>
                         <x-form-label for="">Description</x-form-label>
-                        <textarea  id="" cols="30" rows="2.5" name="description">{{$book->description}}</textarea>
+                        <textarea  id="content" cols="30" rows="2.5" name="description">{{$book->description}}</textarea>
                     </x-form-group>
                     <x-form-group>
                         <x-form-label for="">Image</x-form-label>

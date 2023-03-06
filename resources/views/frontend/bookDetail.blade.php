@@ -37,7 +37,7 @@
             </div>
             <div class="p-5">
                 <h4 class="font-medium text-xl">Mô tả sản phẩm</h4>
-                <p class="pt-4  ">{{$book->description}}</p>
+                <p class="pt-4  ">{!!$book->description!!}</p>
             </div>
         </div>
     </div>

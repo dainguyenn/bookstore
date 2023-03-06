@@ -33,7 +33,7 @@
                     </x-form-group>
                     <x-form-group>
                         <x-form-label for="">Story</x-form-label>
-                        <textarea   id="" cols="70" rows="5" name="story"></textarea>
+                        <textarea   id="content" cols="70" rows="5" name="story"></textarea>
                     </x-form-group>
                     <button class="py-[7px] px-[12px]  text-white cursor-pointer rounded-md bg-primary hover:bg-h_primary" type="submit">
                         Create
@@ -45,4 +45,7 @@
              </div>
         </div>
     </div>
+    <script >
+        CKEDITOR.replace('content');
+    </script>
 </x-admin-layout>
