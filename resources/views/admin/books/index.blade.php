@@ -80,6 +80,8 @@
                     @endforeach
                 </tbody>
             </table>
+            
+             {{$books->links('components.pagination')}}
         </div>
     </div>
 </x-admin-layout>

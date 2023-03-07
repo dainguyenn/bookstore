@@ -16,7 +16,7 @@ class BooksController extends Controller
      */
     public function index()
     {
-        $books = Books::all();
+        $books = Books::paginate(5); 
         $authors = Authors::all();
         return view('admin.books.index',compact(['books','authors']));
     }

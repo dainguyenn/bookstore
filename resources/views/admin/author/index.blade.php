@@ -53,6 +53,8 @@
                 </tbody>
 
             </table>
+            {{$authors->links('components.pagination')}}
+
         </div>
     </div>
 </x-admin-layout>

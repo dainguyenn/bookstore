@@ -15,7 +15,7 @@ class AuthorsController extends Controller
      */
     public function index()
     {
-        $authors = Authors::all()->where('active',true);
+        $authors = Authors::where('active',true)->paginate(5);
         return view('admin.author.index',compact('authors'));
     }
 
